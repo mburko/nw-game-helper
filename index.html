@@ -3,6 +3,61 @@
 <head>
   <title>Gold Farm Daily Checklist</title>
   <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+  <script type="text/javascript">
+  	// Function to load checkbox statuses
+function loadCheckboxStatuses() {
+    var checkboxes = document.getElementsByClassName('activity-checkbox');
+    var checkboxStatuses = JSON.parse(localStorage.getItem('checkboxStatuses')) || {};
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        var checkbox = checkboxes[i];
+        if (checkboxStatuses[checkbox.id] === true) {
+            checkbox.checked = true;
+        } else {
+            checkbox.checked = false;
+        }
+    }
+}
+
+// Function to save checkbox statuses
+function saveCheckboxStatuses() {
+    var checkboxes = document.getElementsByClassName('activity-checkbox');
+    var checkboxStatuses = {};
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        var checkbox = checkboxes[i];
+        checkboxStatuses[checkbox.id] = checkbox.checked;
+    }
+
+    localStorage.setItem('checkboxStatuses', JSON.stringify(checkboxStatuses));
+}
+
+// Function to clear local storage at 5AM
+function clearLocalStorageAt5AM() {
+    var now = new Date();
+    var millisTill5AM = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 5, 0, 0, 0) - now;
+
+    if (millisTill5AM < 0) {
+        millisTill5AM += 86400000; // it's after 5AM, try 5AM tomorrow.
+    }
+
+    setTimeout(function() {
+        localStorage.clear(); // clear local storage
+    }, millisTill5AM);
+}
+
+// Run on page load
+window.onload = function() {
+    loadCheckboxStatuses();
+    clearLocalStorageAt5AM();
+
+    // Save checkbox statuses whenever any checkbox changes
+    var checkboxes = document.getElementsByClassName('activity-checkbox');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].onchange = saveCheckboxStatuses;
+    }
+};
+  </script>
   <style>
     /* Reset default margins and paddings */
     * {
@@ -76,39 +131,39 @@
     <div class="main-content">
       <div class="activity" id="activity-1">
         <span class="activity-checkbox" id="activity-1">
-          <input type="checkbox">
+          <input type="checkbox" class="activity-checkbox" id="event-1" name="event" value="event">
         </span>
         <span class="activity-name" id="activity-1">Event Activity</span>
       </div>
       <div class="activity" id="activity-2">
         <span class="activity-checkbox" id="activity-2">
-          <input type="checkbox">
+          <input type="checkbox" class="activity-checkbox" id="event-2" name="event" value="event">
         </span>
         <span class="activity-name" id="activity-2">Hidden stash from gathering professions (3 per day)</span>
       </div>
       <div class="activity" id="activity-3">
         <span class="activity-checkbox" id="activity-3">
-          <input type="checkbox" id="event" name="event" value="event">
+          <input type="checkbox" class="activity-checkbox" id="event-3" name="event" value="event">
         </span>
         <span class="activity-name" id="activity-3">Big Corrupted Breaches (2 per day)</span>
       </div>
       <div class="activity" id="activity-4">
         <span class="activity-checkbox" id="activity-4">
-          <input type="checkbox" id="event" name="event" value="event">
+          <input type="checkbox" class="activity-checkbox" id="event-4" name="event" value="event">
         </span>
         <span class="activity-name" id="activity-4">Refining professions cooldown crafts (Sell on TP)</span>
       </div>
       <div class="activity" id="activity-5">
         <span class="activity-checkbox" id="activity-5">
-          <input type="checkbox" id="event" name="event" value="event">
+          <input type="checkbox" class="activity-checkbox" id="event-5" name="event" value="event">
         </span>
         <span class="activity-name" id="activity-5">Faction daily missions (3 per day)</span>
       </div>
       <div class="activity" id="activity-6">
         <span class="activity-checkbox" id="activity-6">
-          <input type="checkbox" id="event" name="event" value="event">
+          <input type="checkbox" class="activity-checkbox" id="event-6" name="event" value="event">
         </span>
-        <span class="activity-name" id="activity-6">Acid Chest run</span>
+        <span class="activity-name" class="activity-checkbox" id="activity-6">Acid Chest run</span>
       </div>
       <div class="activity" id="activity-7">
         <span class="activity-name">Gathering</span>
