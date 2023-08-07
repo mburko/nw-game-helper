@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <title>Gold Farm Daily Checklist</title>
-  <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+  <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
   <style>
     /* Reset default margins and paddings */
     * {
@@ -25,10 +26,10 @@
     }
 
     .language-switcher {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
 
     /* Main container styles */
     .main {
@@ -73,16 +74,34 @@
       font-weight: bold;
       margin-top: 10px;
     }
+
+    .view-counter {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      /* Change this from 'right' to 'left' */
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-size: 1em;
+      color: #8B4513;
+    }
   </style>
 </head>
+
 <body>
-	<div class="language-switcher">
+  <div class="view-counter">
+    <span>Views: </span>
+    <span id="counter-value">0</span>
+  </div>
+  <div class="language-switcher">
     <select id="languageSelect">
-        <option value="en">English</option>
-        <option value="ua">Українська</option>
-        <!-- Add more options for other languages here -->
+      <option value="en">English</option>
+      <option value="ua">Українська</option>
+      <!-- Add more options for other languages here -->
     </select>
-</div>
+  </div>
   <div class="main">
     <div class="title">
       <h1 data-translate="titleText">Gold Farm Daily Checklist</h1>
@@ -98,19 +117,22 @@
         <span class="activity-checkbox" id="activity-2">
           <input type="checkbox" class="activity-checkbox" id="event-2" name="event" value="event">
         </span>
-        <span class="activity-name" id="activity-2" data-translate="activity2">Hidden stash from gathering professions (3 per day)</span>
+        <span class="activity-name" id="activity-2" data-translate="activity2">Hidden stash from gathering professions
+          (3 per day)</span>
       </div>
       <div class="activity" id="activity-3">
         <span class="activity-checkbox" id="activity-3">
           <input type="checkbox" class="activity-checkbox" id="event-3" name="event" value="event">
         </span>
-        <span class="activity-name" id="activity-3" data-translate="activity3">Major Corrupted Breaches (2 per day)</span>
+        <span class="activity-name" id="activity-3" data-translate="activity3">Major Corrupted Breaches (2 per
+          day)</span>
       </div>
       <div class="activity" id="activity-4">
         <span class="activity-checkbox" id="activity-4">
           <input type="checkbox" class="activity-checkbox" id="event-4" name="event" value="event">
         </span>
-        <span class="activity-name" id="activity-4" data-translate="activity4">Refining professions cooldown crafts (Sell on TP)</span>
+        <span class="activity-name" id="activity-4" data-translate="activity4">Refining professions cooldown crafts
+          (Sell on TP)</span>
       </div>
       <div class="activity" id="activity-5">
         <span class="activity-checkbox" id="activity-5">
@@ -122,7 +144,8 @@
         <span class="activity-checkbox" id="activity-6">
           <input type="checkbox" class="activity-checkbox" id="event-6" name="event" value="event">
         </span>
-        <span class="activity-name" class="activity-checkbox" id="activity-6" data-translate="activity6">Acid Chest run</span>
+        <span class="activity-name" class="activity-checkbox" id="activity-6" data-translate="activity6">Acid Chest
+          run</span>
       </div>
       <div class="activity" id="activity-7">
         <span class="activity-name" data-translate="activity7">Gathering</span>
@@ -132,114 +155,136 @@
 </body>
 
 <script type="text/javascript">
-  	var translations = {
+  var translations = {
     en: {
-    	titleText: "Gold Farm Daily Checklist",
-        activity1: "Event Activity",
-        activity2: "Hidden stash from gathering professions (3 per day)",
-        activity3: "Major Corrupted Breaches (2 per day)",
-        activity4: "Refining professions cooldown crafts (Sell on TP)",
-        activity5: "Faction daily missions (3 per day)",
-        activity6: "Acid Chest run",
-        activity7: "Gathering"
+      titleText: "Gold Farm Daily Checklist",
+      activity1: "Event Activity",
+      activity2: "Hidden stash from gathering professions (3 per day)",
+      activity3: "Major Corrupted Breaches (2 per day)",
+      activity4: "Refining professions cooldown crafts (Sell on TP)",
+      activity5: "Faction daily missions (3 per day)",
+      activity6: "Acid Chest run",
+      activity7: "Gathering"
     },
     ua: {
-    	titleText: "Чеклист щоденного голдфарму",
-        activity1: "Івент активності",
-        activity2: "Приховані мішечки зі збиральницьких професій (3 на день)",
-        activity3: "Великі корапт портали (2 на день)",
-        activity4: "Кулдаун крафти професій переробки (Продати на ринку)",
-        activity5: "Фракційні дейліки (3 на день)",
-        activity6: "Acid чест-ран",
-        activity7: "Фарм на збиральництві"
+      titleText: "Чеклист щоденного голдфарму",
+      activity1: "Івент активності",
+      activity2: "Приховані мішечки зі збиральницьких професій (3 на день)",
+      activity3: "Великі корапт портали (2 на день)",
+      activity4: "Кулдаун крафти професій переробки (Продати на ринку)",
+      activity5: "Фракційні дейліки (3 на день)",
+      activity6: "Acid чест-ран",
+      activity7: "Фарм на збиральництві"
     },
     // add more objects for other languages
-};
+  };
 
-function changeLanguage() {
+  function changeLanguage() {
     var language = document.getElementById('languageSelect').value;
     var elementsToTranslate = document.querySelectorAll('[data-translate]');
 
-    elementsToTranslate.forEach(function(element) {
-        var translationKey = element.getAttribute('data-translate');
-        element.textContent = translations[language][translationKey];
+    elementsToTranslate.forEach(function (element) {
+      var translationKey = element.getAttribute('data-translate');
+      element.textContent = translations[language][translationKey];
     });
 
     // Save the selected language to local storage
     localStorage.setItem('selectedLanguage', language);
-}
+  }
 
-// Function to load the selected language from local storage
-function loadLanguage() {
+  // Function to load the selected language from local storage
+  function loadLanguage() {
     var savedLanguage = localStorage.getItem('selectedLanguage');
 
     // If there was a language saved, set the language selection dropdown to that value
     if (savedLanguage) {
-        document.getElementById('languageSelect').value = savedLanguage;
+      document.getElementById('languageSelect').value = savedLanguage;
     }
-}
+  }
 
-// Add an event listener for the language selection dropdown
-document.getElementById('languageSelect').addEventListener('change', changeLanguage);
+  // Add an event listener for the language selection dropdown
+  document.getElementById('languageSelect').addEventListener('change', changeLanguage);
 
 
-  	// Function to load checkbox statuses
-function loadCheckboxStatuses() {
+  // Function to load checkbox statuses
+  function loadCheckboxStatuses() {
     var checkboxes = document.getElementsByClassName('activity-checkbox');
     var checkboxStatuses = JSON.parse(localStorage.getItem('checkboxStatuses')) || {};
 
     for (var i = 0; i < checkboxes.length; i++) {
-        var checkbox = checkboxes[i];
-        if (checkboxStatuses[checkbox.id] === true) {
-            checkbox.checked = true;
-        } else {
-            checkbox.checked = false;
-        }
+      var checkbox = checkboxes[i];
+      if (checkboxStatuses[checkbox.id] === true) {
+        checkbox.checked = true;
+      } else {
+        checkbox.checked = false;
+      }
     }
-}
+  }
 
-// Function to save checkbox statuses
-function saveCheckboxStatuses() {
+  // Function to save checkbox statuses
+  function saveCheckboxStatuses() {
     var checkboxes = document.getElementsByClassName('activity-checkbox');
     var checkboxStatuses = {};
 
     for (var i = 0; i < checkboxes.length; i++) {
-        var checkbox = checkboxes[i];
-        checkboxStatuses[checkbox.id] = checkbox.checked;
+      var checkbox = checkboxes[i];
+      checkboxStatuses[checkbox.id] = checkbox.checked;
     }
 
     localStorage.setItem('checkboxStatuses', JSON.stringify(checkboxStatuses));
-}
+  }
 
-// Function to clear local storage at 5AM
-function clearLocalStorageAt5AM() {
+  // Function to clear local storage at 5AM
+  function clearLocalStorageAt5AM() {
     var now = new Date();
     var millisTill5AM = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 5, 0, 0, 0) - now;
 
     if (millisTill5AM < 0) {
-        millisTill5AM += 86400000; // it's after 5AM, try 5AM tomorrow.
+      millisTill5AM += 86400000; // it's after 5AM, try 5AM tomorrow.
     }
 
-    setTimeout(function() {
-        localStorage.clear(); // clear local storage
+    setTimeout(function () {
+      localStorage.clear(); // clear local storage
     }, millisTill5AM);
-}
+  }
 
-// Run on page load
-window.onload = function() {
+  function getAndUpdateViewCount() {
+    fetch('https://woe9yf2lb2.execute-api.us-east-1.amazonaws.com/dev/counter?name=lionsKingdomNw')
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.count !== undefined) {
+          document.getElementById('counter-value').textContent = data.count;
+        }
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+  function increaseViewCount() {
+    fetch('https://woe9yf2lb2.execute-api.us-east-1.amazonaws.com/dev/counter?name=lionsKingdomNw', {
+        method: 'GET'
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+  // Run on page load
+  window.onload = function () {
     loadCheckboxStatuses();
     clearLocalStorageAt5AM();
     loadLanguage();
 
+    getAndUpdateViewCount();
+    increaseViewCount();
+
     // Save checkbox statuses whenever any checkbox changes
     var checkboxes = document.getElementsByClassName('activity-checkbox');
     for (var i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].onchange = saveCheckboxStatuses;
+      checkboxes[i].onchange = saveCheckboxStatuses;
     }
 
     changeLanguage();
-};
+  };
 
-document.getElementById('languageSelect').addEventListener('change', changeLanguage);
-  </script>
+  document.getElementById('languageSelect').addEventListener('change', changeLanguage);
+</script>
+
 </html>
