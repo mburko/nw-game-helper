@@ -68,7 +68,7 @@ body {
 /* other styles remain unchanged... */
 
 .view-counter {
-  position: absolute;
+  position: fixed;
   top: 70px;  /* Adjust this value based on the height of your navbar */
   left: 20px;
   padding: 10px 20px;
@@ -77,14 +77,14 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 1em;
   color: #8B4513;
-  z-index: 1000; /* Higher than the navbar z-index */
+  z-index: 1001; /* Higher than the navbar z-index */
 }
 
 .language-switcher {
-  position: absolute;
+  position: fixed;
   top: 70px;  /* Adjust this value based on the height of your navbar */
   right: 20px;
-  z-index: 1000; /* Higher than the navbar z-index */
+  z-index: 1001; /* Higher than the navbar z-index */
 }
 
 /* ... previous CSS styles ... */
@@ -93,6 +93,6 @@ body {
   /* Adjust the position of the view counter and the language switcher */
   .view-counter,
   .language-switcher {
-    top: 60px;
+    top: 70px;
   }
 }
