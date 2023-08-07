@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="logo">
-        <NavLink to="/">Lion's Kingdom</NavLink>
+        <NavLink to="/">Lion's Kingdom | New World</NavLink>
       </div>
       <div className="menu">
         <NavLink to="/" activeClassName="active">Gold Farm Checklist</NavLink>
