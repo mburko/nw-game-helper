@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Removed flex properties */
+  background: url('../New-World-New-Patch-1.webp') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Added a new CSS class for the parent container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.main {
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styles */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title h1 {
+  color: #8B4513;
+  font-size: 24px;
+}
+
+/* Main content styles */
+.main-content {
+  padding: 10px;
+}
+
+/* Activity styles */
+.activity {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.activity-name {
+  margin-left: 10px;
+  color: #8B4513;
+  font-size: 18px;
+}
+
+/* Additional styling for activity-7 */
+#activity-7 {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* other styles remain unchanged... */
+
+.view-counter {
+  position: absolute;
+  top: 70px;  /* Adjust this value based on the height of your navbar */
+  left: 20px;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1em;
+  color: #8B4513;
+  z-index: 1000; /* Higher than the navbar z-index */
+}
+
+.language-switcher {
+  position: absolute;
+  top: 70px;  /* Adjust this value based on the height of your navbar */
+  right: 20px;
+  z-index: 1000; /* Higher than the navbar z-index */
+}
