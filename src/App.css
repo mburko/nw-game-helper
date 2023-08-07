@@ -6,7 +6,7 @@
 
 body {
   /* Removed flex properties */
-  background: url('../New-World-New-Patch-1.webp') no-repeat center center fixed;
+  background: url('../public/New-World-New-Patch-1.webp') no-repeat center center fixed;
   background-size: cover;
   font-family: Arial, sans-serif;
   height: 100vh;
