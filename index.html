@@ -252,8 +252,8 @@
     fetch('https://woe9yf2lb2.execute-api.us-east-1.amazonaws.com/dev/counter?name=lionsKingdomNw')
       .then(response => response.json())
       .then(data => {
-        if (data && data.count !== undefined) {
-          document.getElementById('counter-value').textContent = data.count;
+        if (data && data.value !== undefined) {
+          document.getElementById('counter-value').textContent = data.value;
         }
       })
       .catch(error => console.error('Error:', error));
