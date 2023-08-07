@@ -68,7 +68,7 @@ body {
 /* other styles remain unchanged... */
 
 .view-counter {
-  position: fixed;
+  position: absolute;
   top: 70px;  /* Adjust this value based on the height of your navbar */
   left: 20px;
   padding: 10px 20px;
@@ -81,7 +81,7 @@ body {
 }
 
 .language-switcher {
-  position: fixed;
+  position: absolute;
   top: 70px;  /* Adjust this value based on the height of your navbar */
   right: 20px;
   z-index: 1001; /* Higher than the navbar z-index */
