@@ -259,13 +259,6 @@
       .catch(error => console.error('Error:', error));
   }
 
-  function increaseViewCount() {
-    fetch('https://woe9yf2lb2.execute-api.us-east-1.amazonaws.com/dev/counter?name=lionsKingdomNw', {
-        method: 'GET'
-      })
-      .catch(error => console.error('Error:', error));
-  }
-
   // Run on page load
   window.onload = function () {
     loadCheckboxStatuses();
@@ -273,7 +266,6 @@
     loadLanguage();
 
     getAndUpdateViewCount();
-    increaseViewCount();
 
     // Save checkbox statuses whenever any checkbox changes
     var checkboxes = document.getElementsByClassName('activity-checkbox');
