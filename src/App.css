@@ -86,3 +86,13 @@ body {
   right: 20px;
   z-index: 1000; /* Higher than the navbar z-index */
 }
+
+/* ... previous CSS styles ... */
+
+@media (max-width: 768px) {
+  /* Adjust the position of the view counter and the language switcher */
+  .view-counter,
+  .language-switcher {
+    top: 60px;
+  }
+}

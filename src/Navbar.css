@@ -69,3 +69,19 @@
     border-color: #ffcb05;
   }
   
+  @media (max-width: 768px) {
+    /* Hide the main menu */
+    .navbar .menu {
+      display: none;
+    }
+  
+    /* Adjust the padding of the navbar */
+    .navbar {
+      padding: 10px 20px;
+    }
+  
+    /* Adjust the font size of the logo */
+    .navbar .logo a {
+      font-size: 20px;
+    }
+  }
