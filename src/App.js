@@ -1,10 +1,10 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './Navbar';
-import HomePage from './HomePage';
-import Page1 from './Page1';
-import Page2 from './Page2';
+import Navbar from './components/navbar/Navbar';
+import HomePage from './pages/home_page/HomePage';
+import Page1 from './pages/page1/Page1';
+import Page2 from './pages/page2/Page2';
 
 function App() {
   return (

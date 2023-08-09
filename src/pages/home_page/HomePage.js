@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import translations from './translations';
-import isValidDateAndTimeToRemoveChecks from './helpers';
+import translations from '../../translations/translations';
+import isBeforeTodays5Am from '../../utils/utils';
 
 const HomePage = () => {
     const [language, setLanguage] = useState(localStorage.getItem('selectedLanguage') || 'en');
@@ -19,7 +19,7 @@ const HomePage = () => {
         const newStatuses = { ...prevStatuses, [id]: checked };
         localStorage.setItem('checkboxStatuses', JSON.stringify(newStatuses));
         if (localStorage.getItem('checksActivationTimestamp') === null) {
-          localStorage.setItem('checksActivationTimestamp', Date.now());
+          localStorage.setItem('checksActivationTimestamp', new Date());
         }
         return newStatuses;
       });
@@ -39,7 +39,7 @@ const HomePage = () => {
 
     useEffect(() => {
       let checksActivationTimestamp = localStorage.getItem('checksActivationTimestamp')
-      if (checksActivationTimestamp !== null && isValidDateAndTimeToRemoveChecks(checksActivationTimestamp)) {
+      if (checksActivationTimestamp !== null && isBeforeTodays5Am(checksActivationTimestamp)) {
         localStorage.removeItem('checksActivationTimestamp');
         localStorage.removeItem('checkboxStatuses');
         setCheckboxStatuses({});
